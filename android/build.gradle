@@ -1,3 +1,61 @@
+// group 'com.pichillilorenzo.flutter_inappwebview'
+// version '1.0-SNAPSHOT'
+
+// buildscript {
+//     repositories {
+//         google()
+//         mavenCentral()
+//     }
+
+//     dependencies {
+//         classpath 'com.android.tools.build:gradle:4.1.0'
+//     }
+// }
+
+// rootProject.allprojects {
+//     repositories {
+//         google()
+//         mavenCentral()
+//     }
+// }
+
+// apply plugin: 'com.android.library'
+
+// android {
+//     compileSdkVersion 33
+
+//     defaultConfig {
+//         minSdkVersion 17
+//         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+//         vectorDrawables.useSupportLibrary = true
+//         consumerProguardFiles 'proguard-rules.pro'
+//     }
+//     lintOptions {
+//         disable 'InvalidPackage'
+//     }
+//     buildTypes {
+//         debug {
+//             minifyEnabled false
+//             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//         }
+//         release {
+//             minifyEnabled true
+//             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//         }
+//     }
+//     dependencies {
+//         implementation 'androidx.webkit:webkit:1.5.0'
+//         implementation 'androidx.browser:browser:1.4.0'
+//         implementation 'androidx.appcompat:appcompat:1.5.1'
+//         implementation 'com.squareup.okhttp3:okhttp:3.14.9'
+//         implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+//     }
+// }
+
+
+
+
 group 'com.pichillilorenzo.flutter_inappwebview'
 version '1.0-SNAPSHOT'
 
@@ -8,7 +66,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.0'
+        classpath 'com.android.tools.build:gradle:8.1.0'
     }
 }
 
@@ -22,33 +80,50 @@ rootProject.allprojects {
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 33
+
+    namespace 'com.pichillilorenzo.flutter_inappwebview'
+
+    compileSdk 34
 
     defaultConfig {
-        minSdkVersion 17
+        minSdk 19
+        targetSdk 34
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         vectorDrawables.useSupportLibrary = true
         consumerProguardFiles 'proguard-rules.pro'
     }
-    lintOptions {
-        disable 'InvalidPackage'
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
+
+    lint {
+        disable += 'InvalidPackage'
+    }
+
     buildTypes {
         debug {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'),
+                    'proguard-rules.pro'
         }
+
         release {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'),
+                    'proguard-rules.pro'
         }
-    }
-    dependencies {
-        implementation 'androidx.webkit:webkit:1.5.0'
-        implementation 'androidx.browser:browser:1.4.0'
-        implementation 'androidx.appcompat:appcompat:1.5.1'
-        implementation 'com.squareup.okhttp3:okhttp:3.14.9'
-        implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     }
 }
+
+dependencies {
+    implementation 'androidx.webkit:webkit:1.8.0'
+    implementation 'androidx.browser:browser:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+}
+
