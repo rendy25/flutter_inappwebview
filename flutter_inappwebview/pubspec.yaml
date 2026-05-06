@@ -26,7 +26,7 @@ dependencies:
     sdk: flutter
   # flutter_inappwebview_platform_interface: ^1.4.0-beta.3
   flutter_inappwebview_platform_interface:
-    path: ../flutter_inappwebview_platform_interface
+    path: ../../flutter_inappwebview_platform_interface
   flutter_inappwebview_android: ^1.2.0-beta.3
     # path: ../flutter_inappwebview_android
   flutter_inappwebview_ios: ^1.2.0-beta.3
